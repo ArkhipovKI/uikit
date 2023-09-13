@@ -109,7 +109,7 @@
       --button-color: var(--color-control-typo-ghost);
       --button-color-hover: var(--color-control-typo-ghost-hover);
       --button-border: transparent;
-      --button-bg-color-disable: var(--color-control-bg-disable);
+      --button-bg-color-disable: var(--color-control-bg-border-disable);
       --button-color-disable: var(--color-control-typo-disable);
     }
 
@@ -118,22 +118,42 @@
       --button-bg-color-hover: var(--color-control-bg-primary-hover);
       --button-color: var(--color-control-typo-primary);
       --button-color-hover: var(--color-control-typo-primary-hover);
-      --button-border: transparent;
       --button-bg-color-disable: var(--color-control-bg-disable);
       --button-color-disable: var(--color-control-typo-disable);
+      border: none;
     }
 
     &_secondary {
       --button-bg-color: var(--color-control-bg-secondary);
-      --button-bg-color-hover: var(--color-control-bg-clear);
-      --button-color: var(--color-control-typo-secondary);
+      --button-bg-color-hover: var(--color-control-bg-secondary-hover);
+      --button-color: var(--color-control-typo-clear);
       --button-color-hover: var(--color-control-typo-secondary-hover);
       --button-border: var(--color-control-bg-border-secondary);
-      --button-border-hover: var(--color-control-bg-border-secondary-hover);
+
+      /* --button-border-hover: var(--color-control-bg-border-secondary-hover); */
       --button-bg-color-disable: var(--color-control-bg-secondary);
       --button-color-disable: var(--color-control-typo-disable);
       --button-border-disable: var(--color-control-typo-disable);
-      border: var(--control-border-width) solid var(--button-border);
+
+      /* border: var(--control-border-width) solid var(--button-border); */
+      line-height: calc(var(--button-height) - var(--control-border-width) * 2);
+
+      &:not(.Button_loading):hover,
+      &:not(.Button_disabled):hover,
+      &:not(.Button_disabled):not(.Button_loading):hover {
+        border-color: var(--button-border-hover);
+      }
+    }
+
+    &_error {
+      --button-bg-color: var(--color-bg-error);
+      --button-bg-color-hover: var(--color-control-bg-error-hover);
+      --button-color: var(--color-control-typo-primary);
+      --button-color-hover: var(--color-control-typo-primary-hover);
+      --button-bg-color-disable: var(--color-control-bg-error);
+      --button-color-disable: var(--color-control-typo-primary);
+      --button-border-disable: var(--color-control-typo-disable);
+      color: var(--color-bg-default);
       line-height: calc(var(--button-height) - var(--control-border-width) * 2);
 
       &:not(.Button_loading):hover,
@@ -157,7 +177,6 @@
     --button-bg-color-hover: var(--button-bg-color-disable);
     color: var(--button-color-disable);
     background-color: var(--button-bg-color-disable);
-    border-color: var(--button-border-disable);
   }
 
   &_onlyIcon {

@@ -1,5 +1,4 @@
 import { createIcon } from '../createIcon/createIcon';
-
 import IconMBUSizeM from './IconMBU_size_m';
 import IconMBUSizeS from './IconMBU_size_s';
 import IconMBUSizeXs from './IconMBU_size_xs';

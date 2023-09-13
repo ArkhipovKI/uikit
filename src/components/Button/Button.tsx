@@ -20,6 +20,7 @@ export const buttonPropView = [
   'clear',
   'ghost',
   'secondary',
+  'error',
 ] as const;
 export type ButtonPropView = typeof buttonPropView[number];
 export const buttonPropViewDefault: ButtonPropView = buttonPropView[0];
@@ -190,7 +191,9 @@ export const Button = forwardRefWithAs<Props, 'button'>((props, ref) => {
         ) : (
           label
         ))}
-      {loading && <Loader className={cnButton('Loader')} size="s" />}
+      {loading && (
+        <Loader className={cnButton('Loader')} size="s" buttonSize={size} />
+      )}
     </Tag>
   );
 });

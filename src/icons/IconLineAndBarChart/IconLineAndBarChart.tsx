@@ -1,5 +1,4 @@
 import { createIcon } from '../createIcon/createIcon';
-
 import IconLineAndBarChartSizeM from './IconLineAndBarChart_size_m';
 import IconLineAndBarChartSizeS from './IconLineAndBarChart_size_s';
 import IconLineAndBarChartSizeXs from './IconLineAndBarChart_size_xs';

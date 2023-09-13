@@ -9,6 +9,9 @@ module.exports = {
       true,
       { ignorePseudoClasses: ['focus-visible', 'global'] },
     ],
+    "property-no-unknown": [true, {
+      "ignoreProperties": ["aspect-ratio"]
+    }],
     'rule-empty-line-before': [
       'always',
       { except: ['after-single-line-comment', 'first-nested'] },
