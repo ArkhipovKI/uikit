@@ -1,3 +1,23 @@
+:root {
+  --spinner-mask: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22' preserveAspectRatio='xMidYMid meet' xml:space='preserve'%3E%3Ccircle fill='none' stroke='currentColor' stroke-width='3' cx='11' cy='11' r='8.5'/%3E%3C/svg%3E");
+}
+
+.Loader_size {
+  &_s {
+    --loader-size: 22px;
+  }
+
+  &_m {
+    --loader-size: 44px;
+  }
+}
+
+.Loader_buttonSize {
+  &_xs {
+    --loader-size: 16px;
+  }
+}
+
 .Loader {
   --backgroundColor:
     var(
@@ -5,17 +25,30 @@
       var(--color-control-bg-primary)
     );
   position: relative;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: calc(100% - var(--loader-size));
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--loader-size);
+  height: var(--loader-size);
+
+  &-Circle {
+    width: var(--loader-size);
+    height: var(--loader-size);
+    background-image: conic-gradient(transparent 90deg, var(--backgroundColor));
+    transform-origin: 50% 50%;
+    animation: spin 2s linear infinite;
+    will-change: transform;
+    -webkit-mask: var(--spinner-mask) 0/100% 100%;
+    mask: var(--spinner-mask) 0/100% 100%;
+    aspect-ratio: 1;
+  }
 
   &::before {
-    content: '';
+    content: '1';
     position: absolute;
     top: calc(50% - (var(--loader-size) * 0.5));
     left: calc(50% - (var(--loader-size) * 2.5));
+    display: none;
     width: var(--loader-size);
     height: var(--loader-size);
     background: var(--backgroundColor);
@@ -24,41 +57,25 @@
   }
 
   &::after {
-    content: '';
+    content: '1';
     position: absolute;
     top: calc(50% - (var(--loader-size) * 0.5));
     left: calc(50% + (var(--loader-size) * 1.5));
+    display: none;
     width: var(--loader-size);
     height: var(--loader-size);
     background: var(--backgroundColor);
     border-radius: 50%;
     animation: loader 1s -0.36s ease infinite;
   }
-
-  &-Dot {
-    position: absolute;
-    top: calc(50% - (var(--loader-size) * 0.5));
-    left: calc(50% - (var(--loader-size) * 0.5));
-    width: var(--loader-size);
-    height: var(--loader-size);
-    background: var(--backgroundColor);
-    border-radius: 50%;
-    animation: loader 1s -0.18s ease infinite;
-  }
-
-  &_size {
-    &_s {
-      --loader-size: 4px;
-    }
-
-    &_m {
-      --loader-size: 8px;
-    }
-  }
 }
 
-@keyframes loader {
-  50% {
-    transform: scale(1.5);
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

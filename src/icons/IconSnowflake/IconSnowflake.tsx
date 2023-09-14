@@ -1,5 +1,4 @@
 import { createIcon } from '../createIcon/createIcon';
-
 import IconSnowflakeSizeM from './IconSnowflake_size_m';
 import IconSnowflakeSizeS from './IconSnowflake_size_s';
 import IconSnowflakeSizeXs from './IconSnowflake_size_xs';
